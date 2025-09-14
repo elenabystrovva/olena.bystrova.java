@@ -1,80 +1,36 @@
+import lesson7.Phone;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Hello Java!");
-        getGeneralDataTypesInformation();
-        getInfoLocalData();
-        getBasicVariableInformation();
 
-    }
+        Phone phone1 = new Phone("49-111-111-111", "Samsung Galaxy", 180);
+        Phone phone2 = new Phone("49-222-222-222", "iPhone 17", 170);
+        Phone phone3 = new Phone("49-333-333-333", "Xiaomi Redmi", 190);
 
-    public static void getGeneralDataTypesInformation(){
+        System.out.println("Информация о телефонах:");
+        phone1.printInfo();
+        phone2.printInfo();
+        phone3.printInfo();
 
-        System.out.println(10/5);
-        System.out.println(29-30);
-        System.out.println(8*8);
-        System.out.println(11%5);
-        System.out.println(10%5);
-        int year = 366;
-        int months = 12;
-        System.out.println(year/months);
-        System.out.println(10%5);
+        System.out.println("Проверка методов receiveCall и getNumber:");
+        phone1.receiveCall("Андрей");
+        System.out.println("Номер телефона: " + phone1.getNumber());
 
-        // Автоматическое расширение ТИПА
-        byte byteVal = -128;
-        int valInt = byteVal;
-        System.out.println(valInt);
-        double bigDouble = 0; // 8 bytes
-        int bigInt = 2000000000; // 4 bytes
+        phone2.receiveCall("Мария");
+        System.out.println("Номер телефона: " + phone2.getNumber());
 
-        char letter = 'R'; // char под капотом целое
-        int charValue = letter; // Возьмет значение целочисленное из таблицы и присвоит
-        System.out.println(charValue);
-        charValue = 100;
-        letter = (char) charValue;
-        System.out.println(letter);
+        phone3.receiveCall("Иван");
+        System.out.println("Номер телефона: " + phone3.getNumber());
 
-        long myLong = -2_000_000_000_988_888L;
-        int longCasted = (int) myLong; // ПЕРЕПОЛНЕНИЕ INT
-        System.out.println(longCasted);
-    }
+        System.out.println("Перегруженный метод receiveCall (имя + номер):");
+        phone1.receiveCall("Ольга", "49-577-231-323");
+        phone2.receiveCall("Петр", "49-568-265-309");
+        phone3.receiveCall("Елена", "49-555-876-654");
 
-    public static void getInfoLocalData(){
-        // Примитив не из-за СТЭКА, а из-за того, что под переменной адрес, который прямо указывает на его значение
-        int myValue = 100;
-        myValue = 9;
-        System.out.println(myValue);
-    }
+        System.out.println("Отправка сообщений:");
+        phone1.sendMessage("49-999-111-111", "49-999-222-222", "49-999-333-333");
 
-    public static void getBasicVariableInformation(){
-
-        byte myByte = 34;
-        short myShort = -31_345;
-        long myLong = -3_000_000_000_000_123L;
-        System.out.println(myByte);
-        System.out.println(myShort);
-        System.out.println("My byte value is: " + myByte + ". And my long value is: " + myLong);
-
-        float myFloat = -4.3578458F;
-        double myDouble = 15.3938489944;
-        System.out.println("My float: " + myFloat);
-        System.out.println("My double: " + myDouble);
-
-        char letter = '+';
-        System.out.println("My letter is: " + letter);
-        letter = 33;
-        System.out.println("My letter is: " + letter);
-
-        String name = "Elena";
-        String surname = "Bystrova";
-        String fullNameConcatenated = name + " " + surname;
-        System.out.println(fullNameConcatenated);
-
-        boolean isEmployed = true;
-        System.out.println("Are you employer: " + isEmployed);
-        System.out.println("Welcome to Java " + fullNameConcatenated);
     }
 }
